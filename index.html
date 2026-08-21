@@ -5,18 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research, Methodology &amp; Validation | TalentSmartEQ</title>
 <meta name="description" content="How the Emotional Intelligence Appraisal was developed, and the evidence for its reliability, validity, and relationship to workplace performance.">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="hero">
   <div class="shell">
-    <p class="eyebrow">Research, Methodology &amp; Validation</p>
-    <h1>Two decades of EQ scores, in one curve</h1>
-    <p class="lede">Every score the Emotional Intelligence Appraisal&reg; produces sits somewhere on this
-      distribution. Enter a score, or move across the curve, to see where it falls among recent test-takers.</p>
+    <h1>Research, Methodology &amp; Validation</h1>
+    <p class="lede">TalentSmartEQ's assessment, the Emotional Intelligence Appraisal&reg; (EIA), is backed by
+      more than two decades of research. This page covers how the assessment was developed, the evidence for
+      its reliability and validity, what the data show about EQ and workplace performance, and how the research
+      has held up under independent review.</p>
 
     <div class="explorer">
+      <h2 class="hero-sub">Norming data</h2>
+      <p class="hero-subnote">Every score the assessment produces sits somewhere on this distribution.
+        Enter a score, or move across the curve, to see where it falls among recent test-takers.</p>
+
       <div class="explorer-entry">
         <label for="score">Overall EQ score</label>
         <input id="score" type="number" min="20" max="100" step="1" value="75" inputmode="numeric" aria-describedby="verdict">
@@ -27,7 +32,7 @@
       </div>
 
       <div class="chartwrap">
-        <svg id="chart" viewBox="0 0 1000 420" role="img"
+        <svg id="chart" viewBox="0 0 1000 320" role="img"
              aria-label="Distribution of overall EQ scores among 139,734 test-takers from 2022 to 2026"></svg>
         <div class="tip" id="tip"></div>
       </div>
@@ -180,7 +185,7 @@
   </div>
 </footer>
 
-<script src="js/eq-distribution.js"></script>
-<script src="js/score-explorer.js"></script>
+<script src="eq-distribution.js"></script>
+<script src="score-explorer.js"></script>
 </body>
 </html>

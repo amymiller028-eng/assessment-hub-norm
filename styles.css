@@ -59,7 +59,12 @@ p.spaced{margin-top:1.7rem}
 .hero .eyebrow{color:var(--green-bright)}
 .hero .lede{color:#BED2E9}
 
-.explorer{margin-top:clamp(1.75rem,4vw,2.5rem)}
+.explorer{margin-top:clamp(1.9rem,4.5vw,2.75rem);padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.16)}
+.hero-sub{
+  color:#fff;font-size:1.02rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;margin:0 0 .4rem;
+}
+.hero-subnote{font-size:.95rem;color:#A9C3E0;max-width:58ch;margin:0 0 1.4rem}
 .explorer-entry{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1rem 1.75rem}
 .explorer-entry label{
   display:block;font-size:.72rem;font-weight:700;letter-spacing:.12em;

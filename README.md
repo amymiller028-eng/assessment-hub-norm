@@ -10,12 +10,15 @@ current test-taker population.
 ## Files
 
 ```
-index.html                  the page
-css/styles.css              all styling
-js/eq-distribution.js       the score distribution data
-js/score-explorer.js        the interactive chart
-.nojekyll                   tells GitHub Pages to serve files as-is
+index.html              the page
+styles.css              all styling
+eq-distribution.js      the score distribution data
+score-explorer.js       the interactive chart
+.nojekyll               tells GitHub Pages to serve files as-is
 ```
+
+All files sit at the repository root. GitHub's drag-and-drop uploader flattens folders, so a
+flat layout avoids broken asset paths.
 
 No build step, no dependencies, no external requests. Everything is plain HTML, CSS, and vanilla JS.
 
@@ -41,7 +44,7 @@ To publish it under an existing site, copy this folder into that repository — 
 
 ## Updating the score data
 
-Everything the chart needs lives in `js/eq-distribution.js`:
+Everything the chart needs lives in `eq-distribution.js`:
 
 | Field | Meaning |
 | --- | --- |
