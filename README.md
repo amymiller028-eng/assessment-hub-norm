@@ -59,8 +59,19 @@ a mean of 75 and a standard deviation of 10 on the norm baseline.
 Replacing `counts`, `n`, and the anchor values is all that is needed when the comparison group
 changes. No other file needs editing.
 
-Current comparison group: **139,734 Self Edition administrations, 2022–2026.** That window sits
-entirely after the January 2021 platform migration, so every record uses the same scoring.
+Current comparison group: **720,271 Self Edition administrations, 2021–2026, book and online pooled.**
+That window sits entirely after the platform migration, so every record uses the same scoring.
+
+Built from the August 2026 full extract (`Survey1and1010.zip`, six CSVs, 2.1M rows). Selection rules:
+
+- `RaterLevel = Self` only. Re-assessments are excluded — people retaking after training average
+  about 5 points higher and would inflate the comparison group.
+- Both delivery channels pooled: SurveyId 1010 (book codes) and SurveyId 1 (online). Same
+  instrument, two channels.
+- 2021 onward, which is where the demographic fields begin and which sits after the migration.
+- All 28 items present and in range.
+
+Regenerate with `rebuild_eq_distribution.py`.
 
 ## Two open items before publishing
 
@@ -69,10 +80,32 @@ and .967 for relationship management. Analysis of 2022–2026 platform data prod
 respectively, with overall EQ at .908. The subscale figures should be attributed to the manual's
 sample and date, or reconciled, before this page goes live.
 
-**The 75 versus 76.9 tension.** The page states that 75 is the normative average. The explorer shows
-that 75 now sits at roughly the 41st percentile, because the population mean in 2022–2026 data is
-76.9. Both statements are accurate, and the gap is the norm drift. Consider adding a sentence in the
-Norms and scoring section acknowledging it rather than leaving readers to notice the discrepancy.
+**~~The 75 versus 76.9 tension.~~ RESOLVED — it was not drift, it was channel selection.** The old
+comparison group used the online channel only, whose mean is 76.9, which pushed 75 down to the 41st
+percentile. The online channel runs about 2.9 points above the book channel in every year measured
+(SD of the gap 0.57), because it is largely corporate client populations. Pooling both channels, as
+the comparison group now does, puts the mean at 74.4 and the **median at exactly 75.0 — so 75 sits
+at the 51st percentile**, which is what the documentation always claimed. No wording change needed.
+
+**The seniority and job-function sentences contradict the current data.** The Norms and scoring
+section, citing the technical manual, says *"EQ scores declined among director-level and more senior
+titles"* and that *"sales, finance, and information-technology roles did not differ significantly."*
+Regression on the 2021–2026 data (n = 642,885 complete cases, all eight demographics plus channel
+and year entered together) shows the opposite on both counts:
+
+| Claim on the page | 2021–2026 data |
+| --- | --- |
+| Scores decline at director level and above | Rise monotonically: Director +1.72, VP +2.16, SVP +2.41, C-level +2.63 vs Employee −1.28 |
+| Sales does not differ significantly | Sales **+1.23**, significantly higher |
+| R&D among the highest | R&D **−1.08**, significantly lower |
+| Business development among the highest | Not a category in the current Job Function codebook |
+
+These are attributed to the manual, so they are a citation rather than an error in the page — but a
+reader who checks them against current data will find they no longer hold. Either date and attribute
+them explicitly ("the 2003 manual's sample reported…") or replace them with the current figures.
+**Decide this before the page goes public.** Source: `EQ-Norm-2026.xlsx`, `adjusted` sheet.
+
+**Reliability figures** — unchanged from before, see above.
 
 ## Accessibility and browser support
 
