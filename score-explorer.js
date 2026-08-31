@@ -12,10 +12,14 @@
   var D = window.EQ_DISTRIBUTION;
   if (!D) { return; }
 
-  var n = D.n, MIN = D.min, MAX = D.max, C = D.counts, M = D.m, S = D.s;
+  var n = D.n, MIN = D.min, MAX = D.max, C = D.counts, MAXRAW = D.maxraw || D.max;
 
-  var toScore = function (raw) { return 75 + 10 * (raw - M) / S; };
-  var toRaw = function (sc) { return M + (sc - 75) / 10 * S; };
+  /* Scale: all 28 items, score = raw total / 168 x 100 - the same scale as
+     EQ-Norm-2026.xlsx and the team handoff. Replaces the old z-anchored
+     conversion 75 + 10 * (raw - m) / s, whose anchors were stale and
+     inflated the reported SD to about 11.1 against a true 9.40. */
+  var toScore = function (raw) { return raw / MAXRAW * 100; };
+  var toRaw = function (sc) { return sc / 100 * MAXRAW; };
 
   /* ---- exact percentiles from the real counts ---------------------------- */
   var pct = new Array(C.length), below = 0;
@@ -74,7 +78,10 @@
 
   /* ---- geometry ---------------------------------------------------------- */
   var W = 1000, H = 320, P = { l: 8, r: 8, t: 30, b: 42 };
-  var X0 = 45, X1 = 100;
+  /* window centered on the median (75) and ending at the scale maximum;
+     do not shift off-center - the distribution is left-skewed and an
+     off-center frame makes the lean read as a drawing error */
+  var X0 = 50, X1 = 100;
   var iw = W - P.l - P.r, ih = H - P.t - P.b;
   var sx = function (s) { return P.l + (s - X0) / (X1 - X0) * iw; };
 
